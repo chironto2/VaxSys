@@ -92,19 +92,23 @@ VaxSys integrates **automated decision support** to optimize operations:
 
 ---
 ## NOW how to RUN:
-### 1) Clone the Repository
+
+1) Clone the Repository
 ```bash
 git clone https://github.com/yourusername/VaxSys.git
 cd VaxSys
+
 2) Install Dependencies
 npm install
 # or
 yarn
+
 3) Create .env.local
 NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/vaxsys
 NEXTAUTH_SECRET=your_random_secret_string
+
 4) Initialize MongoDB Collections
 
 Run manually in Mongo Shell or MongoDB Compass:
@@ -114,6 +118,7 @@ db.createCollection("users")
 db.createCollection("vaccines")
 db.createCollection("appointments")
 db.createCollection("vaccination_records")
+
 5) Start Development Server
 npm run dev
 # or
