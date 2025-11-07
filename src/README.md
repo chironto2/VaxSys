@@ -94,7 +94,6 @@ VaxSys integrates **automated decision support** to optimize operations:
 ## NOW how to RUN:
 
 1) Clone the Repository
-```bash
 git clone https://github.com/yourusername/VaxSys.git
 cd VaxSys
 
