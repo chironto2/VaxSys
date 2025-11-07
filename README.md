@@ -102,12 +102,13 @@ npm install
 or yarn
 
 3. Create .env.local in the project root
-NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_
+AUTH_DOMAIN=your_project.app.com
 MONGODB_URI=mongodb+srv://<USER>:<PASSWORD>@cluster.mongodb.net/vaxsys
 NEXTAUTH_SECRET=your_random_secret_string
 
-4. Initialize MongoDB Collections
+5. Initialize MongoDB Collections
 Run in Mongo Shell or MongoDB Compass:
 use vaxsys
 db.createCollection("users")
@@ -115,7 +116,7 @@ db.createCollection("vaccines")
 db.createCollection("appointments")
 db.createCollection("vaccination_records")
 
-5. Start Development Server
+6. Start Development Server
 npm run dev
 
 or
