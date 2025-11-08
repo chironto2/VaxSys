@@ -28,6 +28,29 @@ const navLinks = [
 
 
 export function Header() {
+  const [user, setUser] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error("Failed to parse user from localStorage", error);
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
+  // Filter navLinks: if user is admin (authority), only show "Home"
+  const filteredNavLinks = React.useMemo(() => {
+    if (user?.role === 'authority') {
+      return navLinks.filter(link => link.name === "Home");
+    }
+    return navLinks;
+  }, [user]);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex items-center h-16">
@@ -38,7 +61,7 @@ export function Header() {
           </Link>
         </div>
         <nav className="items-center hidden gap-6 text-sm font-medium md:flex">
-          {navLinks.map(link => (
+          {filteredNavLinks.map(link => (
             <Link
               key={link.name}
               href={link.href}

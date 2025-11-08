@@ -106,7 +106,7 @@ export function HeaderActions() {
   return (
     <>
       <div className="items-center hidden gap-6 text-sm font-medium md:flex">
-        {!isCenterLoggedIn && (
+        {!isLoggedIn && (
          <DropdownMenu>
               <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center gap-1 transition-colors text-foreground/60 hover:text-foreground/80">
@@ -223,7 +223,11 @@ export function HeaderActions() {
               </SheetHeader>
               <div className="pr-10 mt-6">
                 <nav className="flex flex-col gap-4">
-                  {navLinks.map(link => (
+                  {/* Filter navLinks: if user is admin (authority), only show "Home" */}
+                  {(user?.role === 'authority' 
+                    ? navLinks.filter(link => link.name === "Home")
+                    : navLinks
+                  ).map(link => (
                      <SheetClose asChild key={link.name}>
                       <Link
                         href={link.href}
@@ -233,7 +237,7 @@ export function HeaderActions() {
                       </Link>
                     </SheetClose>
                   ))}
-                  {!isCenterLoggedIn && (
+                  {!isLoggedIn && (
                    <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                           <Button variant="ghost" className="justify-start text-lg font-medium transition-colors text-foreground/80 hover:text-foreground">
